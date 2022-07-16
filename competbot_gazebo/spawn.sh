@@ -1,0 +1,1 @@
+roslaunch competbot_gazebo spawn_robot.launch

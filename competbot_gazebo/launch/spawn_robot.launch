@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="robot_name" default="robot"/>
+    <arg name="x_pos" default="0"/>
+    <arg name="y_pos" default="0"/>
+    <arg name="z_pos" default="0"/>
+    <arg name="roll" default="0"/>
+    <arg name="pitch" default="0"/>
+    <arg name="yaw" default="0"/>
+
+    <group ns="$(arg robot_name)">
+
+        <param name="robot_description" command="$(find xacro)/xacro $(find competbot_description)/urdf/competbot.xacro" />
+        <param name="tf_prefix" value="$(arg robot_name)_tf"/>
+        
+        <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+            args="-urdf -model $(arg robot_name) -param robot_description
+                  -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos)
+                  -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
+
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+    </group>
+</launch>
