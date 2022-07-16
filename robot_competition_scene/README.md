@@ -26,3 +26,4 @@ Optional Arguments:
 * [**robocup_spl_ball**](https://github.com/osrf/gazebo_models/tree/master/robocup_spl_ball)
 * [**robocup14_spl_field**](https://github.com/osrf/gazebo_models/tree/master/robocup14_spl_field)
 * [**robocup14_spl_goal**](https://github.com/osrf/gazebo_models/tree/master/robocup14_spl_goal)
+* [**robocup09_spl_field**](https://github.com/osrf/gazebo_models/tree/master/robocup09_spl_field)
