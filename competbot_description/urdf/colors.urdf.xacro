@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+    <xacro:macro name="create_color" params="name value">
+        <material name="${name}">
+            <color rgba="${value}"/>
+        </material>
+    </xacro:macro>
+    
+    <xacro:macro name="gazebo_color" params="link color">
+        <gazebo reference="${link}">
+            <material>Gazebo/${color}</material>
+        </gazebo>
+    </xacro:macro>
+
+    <xacro:create_color name="Black" value="0 0 0 1"/>
+    <xacro:create_color name="Red" value="1 0 0 1"/>
+    <xacro:create_color name="Green" value="0 1 0 1"/>
+    <xacro:create_color name="Blue" value="0 0 1 1"/>
+    <xacro:create_color name="White" value="1 1 1 1"/>
+
+</robot>

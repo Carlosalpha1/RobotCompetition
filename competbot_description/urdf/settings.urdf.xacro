@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:property name="caster_f_height" value="0.04"/> 
+    <xacro:property name="caster_f_radius" value="0.02"/> 
+    <xacro:property name="caster_f_mass" value="0.5"/>
+    
+    <xacro:property name="caster_b_height" value="0.04"/> 
+    <xacro:property name="caster_b_radius" value="0.02"/> 
+    <xacro:property name="caster_b_mass" value="0.5"/>
+    
+    <xacro:property name="M_PI" value="3.1415926535897931"/>
+
+</robot>

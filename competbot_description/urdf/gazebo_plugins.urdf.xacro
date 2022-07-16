@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:macro name="velocity_controller" params="base_frame ljoint rjoint wheel_separation wheel_diameter">
+        <gazebo>
+            <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+                <commandTopic>cmd_vel</commandTopic>
+                <odometryTopic>odom</odometryTopic>
+                <odometryFrame>odom</odometryFrame>
+                <odometrySource>world</odometrySource>
+                <publishOdomTF>true</publishOdomTF>
+                <robotBaseFrame>${base_frame}</robotBaseFrame>
+                <publishWheelTF>false</publishWheelTF>
+                <publishTf>true</publishTf>
+                <publishWheelJointState>true</publishWheelJointState>
+                <legacyMode>false</legacyMode>
+                <updateRate>30</updateRate>
+                <leftJoint>${ljoint}</leftJoint>
+                <rightJoint>${rjoint}</rightJoint>
+                <wheelSeparation>${wheel_separation}</wheelSeparation>
+                <wheelDiameter>${wheel_diameter}</wheelDiameter>
+                <wheelAcceleration>1</wheelAcceleration>
+                <wheelTorque>30</wheelTorque>
+            </plugin>
+        </gazebo>
+    </xacro:macro>
+
+</robot>
