@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<launch>
+
+    <!-- Gazebo Arguments -->
+    <arg name="paused" default="false"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="debug" default="false"/>
+    <arg name="world_name" default="$(find robot_competition_scene)/worlds/game_field.world"/>
+
+    <arg name="rviz" default="true"/>
+
+    <!-- Launch Gazebo World -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="debug" value="$(arg debug)"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="headless" value="$(arg headless)"/>
+        <arg name="world_name" value="$(arg world_name)"/>
+    </include>
+
+    <!-- Spawn External Camera -->
+    <include file="$(find robot_competition_scene)/launch/spawn_camera.launch">
+        <arg name="y_pos" value="4"/>
+    </include>
+
+    <!-- Create World Frame and joining it with base camera frame -->
+    <node name="tf_world_2_base_camera_link" pkg="tf" type="static_transform_publisher"
+          args="0 4 0 0 0 0 world external_camera_tf/base_camera_link 64"/>
+    
+    <!-- Launching RVIZ file -->
+    <group if="$(arg rviz)">
+        <node name="rviz" pkg="rviz" type="rviz" args="-d $(find robot_competition_scene)/rviz/game_field.rviz"/>
+    </group>
+
+</launch>

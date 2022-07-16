@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+    <world name="game_field">
+
+        <include>
+            <uri>model://sun</uri>
+        </include>
+        
+        <include>
+            <uri>model://ground_plane</uri>
+        </include>
+
+        <model name="field">
+            <include>
+                <uri>model://robocup14_spl_field</uri>
+            </include>
+        </model>
+
+        <model name="goal1">
+            <include>
+                <uri>model://robocup14_spl_goal</uri>
+                <pose>4.5 0 0 0 0 0</pose>
+            </include>
+        </model>
+
+        <model name="goal2">
+            <include>
+                <uri>model://robocup14_spl_goal</uri>
+                <pose>-4.5 0 0 0 0 3.14</pose>
+            </include>
+        </model>
+
+        <model name="ball">
+            <include>
+                <uri>model://robocup_spl_ball</uri>
+                <pose>0 0 0 0 0 0</pose>
+            </include>
+        </model>
+
+    </world>
+</sdf>

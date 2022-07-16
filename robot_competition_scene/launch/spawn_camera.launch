@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<launch>
+    <arg name="x_pos" default="0"/>
+    <arg name="y_pos" default="0"/>
+    <arg name="z_pos" default="0"/>
+
+    <group ns="external_camera">
+        <param name="robot_description" command="$(find xacro)/xacro $(find robot_competition_scene)/urdf/camera.xacro" />
+        
+        <param name="tf_prefix" value="external_camera_tf"/>
+        <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+            args="-urdf -model camera -param robot_description
+                  -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos)"/>
+
+        <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+    </group>
+</launch>
