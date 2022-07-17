@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot name="competbot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find competbot_description)/urdf/settings.urdf.xacro"/>
+    <xacro:include filename="$(find competbot_description)/urdf/colors.urdf.xacro"/>
+    <xacro:include filename="$(find competbot_description)/urdf/structures.urdf.xacro"/>
+    <xacro:include filename="$(find competbot_description)/urdf/wheel.urdf.xacro"/>
+    <xacro:include filename="$(find competbot_description)/urdf/gazebo_plugins.urdf.xacro"/>
+
+    <!-- CREATING LINKS -->
+    <link name="base_footprint"></link>
+    <xacro:create_cylinder name="base_link" xyz="0 0 0" rpy="0 0 0" radius="0.15" length="0.08" mass="0.2" color="White"/>
+    <xacro:create_cylinder name="cover_link" xyz="0 0 0" rpy="0 0 0" radius="0.15" length="0.08" mass="0.2" color="Blue"/>
+    <xacro:caster name="caster_front_link" xyz="0 0.02 0" rpy="${M_PI/2} 0 0" radius="${caster_f_radius}" mass="${caster_f_mass}"/>
+    <xacro:caster name="caster_back_link" xyz="0 0.02 0" rpy="${M_PI/2} 0 0" radius="${caster_b_radius}" mass="${caster_b_mass}"/>
+
+    <!-- CREATING JOINTS -->
+    <xacro:fixed_joint name="root_joint" xyz="0 0 0.08" rpy="0 0 0" parent="base_footprint" child="base_link"/>
+    <xacro:fixed_joint name="base_joint" xyz="0 0 0.08" rpy="0 0 0" parent="base_link" child="cover_link"/>
+    <xacro:fixed_joint name="caster_front_joint" xyz="0.115 0.0 -0.02" rpy="${-M_PI/2} 0 0" parent="base_link" child="caster_front_link"/>
+    <xacro:fixed_joint name="caster_back_joint" xyz="-0.115 0.0 -0.02" rpy="${-M_PI/2} 0 0" parent="base_link" child="caster_back_link"/>
+
+    <!-- PUTTING WHEELS -->
+    <xacro:wheel fb="front" lr="right" parent="base_link" translateX="0" translateY="-0.5" flipY="1"/>
+	<xacro:wheel fb="front" lr="left" parent="base_link" translateX="0" translateY="0.5" flipY="1"/>
+
+    <!-- SET COLORS -->
+    <xacro:gazebo_color link="base_link" color="White"/>
+    <xacro:gazebo_color link="cover_link" color="Blue"/>
+
+    <!-- SET VELOCITY CONTROLLER -->
+    <xacro:velocity_controller base_frame="base_footprint"
+        ljoint="front_left_wheel_joint" rjoint="front_right_wheel_joint"
+        wheel_separation="${2*0.15}" wheel_diameter="${2*wheel_radius}"/>
+
+</robot>
