@@ -7,10 +7,11 @@
     <arg name="roll" default="0"/>
     <arg name="pitch" default="0"/>
     <arg name="yaw" default="0"/>
+    <arg name="type" default="red"/>
 
     <group ns="$(arg robot_name)">
 
-        <param name="robot_description" command="$(find xacro)/xacro $(find competbot_description)/urdf/competbot.xacro" />
+        <param name="robot_description" command="$(find xacro)/xacro $(find competbot_description)/urdf/competbot_$(arg type).xacro" />
         <param name="tf_prefix" value="$(arg robot_name)_tf"/>
         
         <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
