@@ -1,6 +1,6 @@
 # Competbot Gazebo
 
-![](./doc/img/competbot.png)
+![](./doc/img/competbots.png)
 
 ## Commands
 
