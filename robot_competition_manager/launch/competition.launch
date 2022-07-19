@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<launch>
+    <!-- It Launchs the Game Field Gazebo World -->
+    <include file="$(find robot_competition_scene)/launch/game_field.launch">
+        <arg name="rviz" value="true"/>
+    </include>
+
+    <rosparam file="$(find robot_competition_manager)/config/data.yaml"/>
+
+    <!-- It launchs the blue team -->
+    <include file="$(find robot_competition_manager)/launch/blue_team.launch"/>
+
+    <!-- It launchs the red team -->
+    <!-- <include file="$(find robot_competition_manager)/launch/red_team.launch"/> -->
+
+    <node name="manager_main_node" pkg="robot_competition_manager" type="main" output="screen"/>
+    <node name="manager_camera_controller_node" pkg="robot_competition_manager" type="camera_controller" output="screen"/>
+    <node name="manager_poses_compute_node" pkg="robot_competition_manager" type="poses_compute" output="screen"/>
+</launch>

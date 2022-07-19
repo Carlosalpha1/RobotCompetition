@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<launch>
+    <include file="$(find competbot_gazebo)/launch/spawn_red_robot.launch">
+        <arg name="robot_name" value="red1"/>
+        <arg name="x_pos" value="-1"/>
+    </include>
+
+    <include file="$(find competbot_gazebo)/launch/spawn_red_robot.launch">
+        <arg name="robot_name" value="red2"/>
+        <arg name="x_pos" value="-4"/>
+    </include>
+</launch>
