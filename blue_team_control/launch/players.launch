@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<launch>
+    <node name="player1_control" pkg="blue_team_control" type="player" args="player1 blue_team" output="screen"/>
+    <node name="player2_control" pkg="blue_team_control" type="player" args="player2 blue_team" output="screen"/>
+    <node name="player3_control" pkg="blue_team_control" type="player" args="player3 blue_team" output="screen"/>
+    <node name="player4_control" pkg="blue_team_control" type="player" args="player4 blue_team" output="screen"/>
+</launch>
