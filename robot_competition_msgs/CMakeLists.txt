@@ -14,6 +14,11 @@ add_message_files(
   Poses.msg
 )
 
+add_service_files(
+  FILES
+  registry.srv
+)
+
 generate_messages(
   DEPENDENCIES
   std_msgs

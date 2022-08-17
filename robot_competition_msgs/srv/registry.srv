@@ -1,0 +1,5 @@
+string name
+string team
+Pose pose
+---
+bool status
